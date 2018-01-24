@@ -1,0 +1,9 @@
+sqlalchemy
+Flask
+bcrypt
+psycopg2
+uwsgi
+validate_email
+pika
+pyjwt
+requests

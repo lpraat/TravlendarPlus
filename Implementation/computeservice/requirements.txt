@@ -1,0 +1,6 @@
+Flask
+Flask-Testing
+GoogleMaps
+pytz
+Redis
+uwsgi

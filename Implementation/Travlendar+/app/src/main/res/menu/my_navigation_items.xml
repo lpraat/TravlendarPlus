@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/userschedule">
+        <item
+            android:orderInCategory="0"
+            android:id="@+id/schedule"
+            android:icon="@drawable/schedule"
+            android:title="@string/schedule" />
+    </group>
+
+
+    <group android:id="@+id/calendars">
+        <item
+            android:orderInCategory="1"
+            android:id="@+id/create_calendar"
+            android:icon="@drawable/create_calendar"
+            android:title="@string/create_calendar" />
+
+    </group>
+
+
+    <group
+        android:id="@+id/options"
+        android:layout_width="wrap_content">
+
+        <item
+            android:orderInCategory="2"
+            android:id="@+id/preferences"
+            android:icon="@drawable/preferences"
+            android:title="@string/preferences" />
+
+        <item
+            android:orderInCategory="2"
+            android:id="@+id/settings"
+            android:icon="@drawable/settings"
+            android:title="@string/settings" />
+
+        <item
+            android:orderInCategory="2"
+            android:id="@+id/logout"
+            android:icon="@drawable/logout"
+            android:title="@string/logout" />
+
+
+    </group>
+
+
+</menu>

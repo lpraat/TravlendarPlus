@@ -1,0 +1,10 @@
+python-dateutil
+Flask
+Flask-SQLAlchemy
+Flask-Testing
+pika
+polyline
+psycopg2
+requests
+SQLAlchemy
+uwsgi

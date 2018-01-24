@@ -1,0 +1,5 @@
+sqlalchemy
+Flask
+psycopg2
+uwsgi
+pika
