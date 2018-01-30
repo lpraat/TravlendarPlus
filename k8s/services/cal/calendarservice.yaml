@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+    name: cal
+spec:
+    selector:
+        app: cal
+    ports:
+        - protocol: 'TCP'
+          port: 80
+          targetPort: 8003
+    type: LoadBalancer

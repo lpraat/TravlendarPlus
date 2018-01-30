@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1
+metadata:
+    name: cal-db
+spec:
+    selector:
+        app: cal-db
+    ports:
+        - protocol: "TCP"
+          port: 5432
+          targetPort: cal-db

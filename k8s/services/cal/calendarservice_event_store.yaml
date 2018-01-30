@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1
+metadata:
+    name: cal-es
+spec:
+    selector:
+        app: cal-es
+    ports:
+        - protocol: "TCP"
+          port: 5432
+          targetPort: cal-es
