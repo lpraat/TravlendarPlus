@@ -1,5 +1,6 @@
+# delete deployments and services for a clean startup
 kubectl delete deployment --all
-kubectl delete service -all
+kubectl delete service --all
 
 kubectl create -f ./yamls/rabbit/rabbit.yaml
 
@@ -22,11 +23,14 @@ kubectl create -f ./yamls/ins/instructionsservice_db.yaml
 kubectl create -f ./yamls/ins/instructionsservice.yaml
 
 kubectl create -f ./yamls/kong/kong_postgres.yaml
+
+# Runs a jon for the migrations, this job is deleted at the end of the script
 kubectl create -f ./yamls/kong/kong_migration_postgres.yaml
 kubectl create -f ./yamls/kong/kong_postgres.yaml
 
 
 ## TODO ##
-# KONG SETUP
+# KONG SETUP LIKE IN KONG_SETUP.SH #
+##     ##
 
 kubectl delete -f ./yamls/kong/kong_migration_postgres.yaml
