@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1
+metadata:
+    name: com
+spec:
+    selector:
+        app: com
+    ports:
+        - protocol: 'TCP'
+          port: 80
+          targetPort: com-uwsgi

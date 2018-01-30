@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: com-redis
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: com-redis
+        track: stable
+    spec:
+      containers:
+        - name: com-redis
+          image: redis
+          ports:
+            - name: com-redis
+              containerPort: 6379
+
