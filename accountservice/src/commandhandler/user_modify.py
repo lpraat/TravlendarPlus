@@ -1,5 +1,6 @@
 import logging
 
+import requests
 from flask import jsonify, request
 from sqlalchemy.exc import SQLAlchemyError
 
@@ -17,6 +18,8 @@ from src.utils import hash_pass
 
 logger = logging.getLogger(__name__)
 
+KONG_IP = "172.18.0.2"
+KONG_CONSUMER_API = f"http://{KONG_IP}:8001/consumers"
 
 @command.route('/users/<int:user_id>', methods=['PUT'])
 def handle_modify(user_id):
@@ -59,6 +62,8 @@ def handle_modify(user_id):
                     # both of these are wrapped inside a unique try catch because this must be an atomic operation.
                     UserEvent.append_event(event)
                     event_published = publish_event(get_sending_channel(), event, USER_MODIFIED)
+
+                    resp = requests.post(KONG_CONSUMER_API, data={'username': email})
 
                     if not event_published:
                         logger.error(f'Could not publish event on event bus for request: {request}')

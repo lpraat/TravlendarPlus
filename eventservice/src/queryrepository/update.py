@@ -101,6 +101,7 @@ def modify_event(event):
         event_to_update.end_time = event.end_time
         event_to_update.recurrence_rule = event.recurrence_rule
         event_to_update.until = event.until
+        event_to_update.next_is_base = event.next_is_base
         event_to_update.flex = event.flex
         event_to_update.flex_duration = event.flex_duration
         session.flush()

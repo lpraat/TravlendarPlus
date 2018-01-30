@@ -149,6 +149,7 @@
     <string name="delete_no_recurrence">No, Just this recurrence</string>
     <string name="return_text">For returning to base</string>
     <string name="instructions_error">It is not possible to retrieve instructions for this event</string>
+    <string name="warning">You may arrive late to this event!</string>
 
 
 </resources>

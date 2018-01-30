@@ -313,6 +313,7 @@ public class ModifyEventFragment extends Fragment {
                     String startDateString = eventResource.getStartTime();
                     String endDateString = eventResource.getEndTime();
                     Boolean nextIsBase = eventResource.getNextIsBase();
+                    Log.d("ciao", nextIsBase.toString());
                     String recurrenceRule = eventResource.getRecurrenceRule();
                     String untilDateString = eventResource.getUntil();
                     Boolean flex = eventResource.getFlex();

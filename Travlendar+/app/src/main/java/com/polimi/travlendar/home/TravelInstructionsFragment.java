@@ -189,8 +189,9 @@ public class TravelInstructionsFragment extends Fragment {
                 }
 
                 if (!s.getTravelMode().equals(travelMode)) { // this step includes a different travel mode
+                    String newTravelMode = s.getTravelMode();
                     directions.append("\n");
-                    appendFromHtml("<h2>" + travelMode + "</h2>", directions);
+                    appendFromHtml("<h2>" + newTravelMode + "</h2>", directions);
                     directions.append("\n");
                 }
                 appendFromHtml(s.getInstructions(), directions);
