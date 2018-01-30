@@ -1,0 +1,36 @@
+kind: Service
+apiVersion: v1
+metadata:
+    name: cal-db
+spec:
+    selector:
+        app: cal-db
+    ports:
+        - protocol: "TCP"
+          port: 5432
+          targetPort: cal-db
+
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: cal-db
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: cal-db
+        track: stable
+    spec:
+      containers:
+        - name: cal-db
+          image: "postgres:alpine"
+          env:
+            - name: POSTGRES_USER
+              value: 'lpraat'
+            - name: POSTGRES_PASSWORD
+              value: 'password'
+          ports:
+            - name: cal-db
+              containerPort: 5432

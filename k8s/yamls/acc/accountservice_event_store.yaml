@@ -1,0 +1,36 @@
+kind: Service
+apiVersion: v1
+metadata:
+    name: acc-es
+spec:
+    selector:
+        app: acc-es
+    ports:
+        - protocol: "TCP"
+          port: 5432
+          targetPort: acc-es
+
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: acc-es
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: acc-es
+        track: stable
+    spec:
+      containers:
+        - name: acc-es
+          image: "postgres:alpine"
+          env:
+            - name: POSTGRES_USER
+              value: 'lpraat'
+            - name: POSTGRES_PASSWORD
+              value: 'password'
+          ports:
+            - name: acc-es
+              containerPort: 5432

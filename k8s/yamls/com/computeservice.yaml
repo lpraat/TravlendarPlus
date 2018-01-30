@@ -1,0 +1,36 @@
+kind: Service
+apiVersion: v1
+metadata:
+    name: com
+spec:
+    selector:
+        app: com
+    ports:
+        - protocol: 'TCP'
+          port: 80
+          targetPort: com-uwsgi
+
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: com
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: com
+        track: stable
+    spec:
+      containers:
+        - name: com
+          image: "lpraat/computeservice:latest"
+          env:
+            - name: REDIS_IP
+              value: com-redis.default.svc.cluster.local
+            - name: REDIS_PORT
+              value: '6379'
+          ports:
+            - name: com-uwsgi
+              containerPort: 8006
