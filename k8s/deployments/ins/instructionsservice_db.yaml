@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: ins-db
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ins-db
+        track: stable
+    spec:
+      containers:
+        - name: ins-db
+          image: "postgres:alpine"
+          env:
+            - name: POSTGRES_USER
+              value: 'postgres'
+            - name: POSTGRES_PASSWORD
+              value: 'admin'
+            - name: POSTGRES_DB
+              value: 'production'
+          ports:
+            - name: ins-db
+              containerPort: 5432
