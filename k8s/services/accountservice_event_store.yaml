@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1
+metadata:
+    name: accountservice_event_store
+spec:
+    selector:
+        app: accountservice_event_store
+    ports:
+        - protocol: "TCP"
+          port: 5432
+          targetPort: accountservice_event_store_port

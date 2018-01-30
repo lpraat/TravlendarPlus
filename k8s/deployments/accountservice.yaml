@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: accountservice
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: accountservice
+        track: stable
+    spec:
+      containers:
+        - name: accountservice
+          image: "lpraat/accountservice:latest"
+          env:
+            - name: DB_USER
+              value: 'lpraat'
+            - name: DB_PASSWORD
+              value: 'password'
+            - name: DB_IP
+              value: accountservice_db.default.svc.cluster.local
+            - name: DP_PORT
+              value: '5432'
+            - name: EVENT_STORE_USER
+              value: 'lpraat'
+            - name: EVENT_STORE_PASSWORD
+              value: 'password'
+            - name: EVENT_STORE_IP
+              value: accountservice_event_store.default.svc.cluster.local
+            - name: EVENT_STORE_PORT
+              value: '5432'
+            - name: RABBITMQ_IP
+              value: rabbit.default.svc.cluster.local
+              value: '5672'
+          ports:
+            - name: accountservice_uwsgi
+              containerPort: 8002

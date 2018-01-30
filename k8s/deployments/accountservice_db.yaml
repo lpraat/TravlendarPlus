@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: accountservice_db
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: accountservice_db
+        track: stable
+    spec:
+      containers:
+        - name: accountservice_db
+          image: "postgres:alpine"
+          env:
+            - name: POSTGRES_USER
+              value: 'lpraat'
+            - name: POSTGRES_PASSWORD
+              value: 'password'
+          ports:
+            - name: accountservice_db_port
+              containerPort: 5432

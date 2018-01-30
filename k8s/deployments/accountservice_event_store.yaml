@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: accountservice_event_store
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: accountservice_event_store
+        track: stable
+    spec:
+      containers:
+        - name: accountservice_event_store
+          image: "postgres:alpine"
+          env:
+            - name: POSTGRES_USER
+              value: 'lpraat'
+            - name: POSTGRES_PASSWORD
+              value: 'password'
+          ports:
+            - name: accountservice_event_store_port
+              containerPort: 5432
