@@ -1,11 +1,11 @@
 kind: Service
 apiVersion: v1
 metadata:
-    name: accountservice_db
+    name: acc-db
 spec:
     selector:
-        app: accountservice_db
+        app: acc-db
     ports:
         - protocol: "TCP"
           port: 5432
-          targetPort: accountservice_db_port
+          targetPort: acc-db

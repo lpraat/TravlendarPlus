@@ -1,17 +1,17 @@
-apiVersion: apps/v1
+apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: accountservice_event_store
+  name: acc-es
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: accountservice_event_store
+        app: acc-es
         track: stable
     spec:
       containers:
-        - name: accountservice_event_store
+        - name: acc-es
           image: "postgres:alpine"
           env:
             - name: POSTGRES_USER
@@ -19,5 +19,5 @@ spec:
             - name: POSTGRES_PASSWORD
               value: 'password'
           ports:
-            - name: accountservice_event_store_port
+            - name: acc-es
               containerPort: 5432

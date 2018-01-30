@@ -1,11 +1,11 @@
 kind: Service
 apiVersion: v1
 metadata:
-    name: accountservice_event_store
+    name: acc-es
 spec:
     selector:
-        app: accountservice_event_store
+        app: acc-es
     ports:
         - protocol: "TCP"
           port: 5432
-          targetPort: accountservice_event_store_port
+          targetPort: acc-es

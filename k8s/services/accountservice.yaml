@@ -1,11 +1,11 @@
 kind: Service
 apiVersion: v1
 metadata:
-    name: accountservice
+    name: acc
 spec:
     selector:
-        app: accountservice
+        app: acc
     ports:
         - protocol: "TCP"
           port: 80
-          targetPort: accountservice_uwsgi
+          targetPort: acc-uwsgi

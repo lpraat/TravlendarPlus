@@ -1,4 +1,4 @@
-apiVersion: apps/v1
+apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: rabbit
@@ -14,5 +14,5 @@ spec:
         - name: rabbit
           image: "rabbitmq:3"
           ports:
-            - name: rabbit_port
+            - name: rabbit
               containerPort: 5672
