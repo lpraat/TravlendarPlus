@@ -1,25 +1,25 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: cal
+  name: ev
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: cal
+        app: ev
         track: stable
     spec:
       containers:
-        - name: cal
-          image: "lpraat/calendarservice:latest"
+        - name: ev
+          image: "lpraat/eventservice:latest"
           env:
             - name: DB_USER
               value: 'lpraat'
             - name: DB_PASSWORD
               value: 'password'
             - name: DB_IP
-              value: cal-db.default.svc.cluster.local
+              value: ev-db.default.svc.cluster.local
             - name: DB_DB
               value: 'lpraat'
             - name: DB_PORT
@@ -29,7 +29,7 @@ spec:
             - name: EVENT_STORE_PASSWORD
               value: 'password'
             - name: EVENT_STORE_IP
-              value: cal-es.default.svc.cluster.local
+              value: ev-es.default.svc.cluster.local
             - name: EVENT_STORE_DB
               value: 'lpraat'
             - name: EVENT_STORE_PORT
@@ -39,5 +39,5 @@ spec:
             - name: RABBITMQ_PORT
               value: '5672'
           ports:
-            - name: cal-uwsgi
-              containerPort: 8003
+            - name: ev-uwsgi
+              containerPort: 8004

@@ -22,7 +22,7 @@ spec:
               value: acc-db.default.svc.cluster.local
             - name: DB_DB
               value: 'lpraat'
-            - name: DP_PORT
+            - name: DB_PORT
               value: '5432'
             - name: EVENT_STORE_USER
               value: 'lpraat'

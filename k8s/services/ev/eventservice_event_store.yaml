@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1
+metadata:
+    name: ev-es
+spec:
+    selector:
+        app: ev-es
+    ports:
+        - protocol: "TCP"
+          port: 5432
+          targetPort: ev-es

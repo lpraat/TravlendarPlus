@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: ev-es
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ev-es
+        track: stable
+    spec:
+      containers:
+        - name: ev-es
+          image: "postgres:alpine"
+          env:
+            - name: POSTGRES_USER
+              value: 'lpraat'
+            - name: POSTGRES_PASSWORD
+              value: 'password'
+          ports:
+            - name: ev-es
+              containerPort: 5432

@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1
+metadata:
+    name: ev-db
+spec:
+    selector:
+        app: ev-db
+    ports:
+        - protocol: "TCP"
+          port: 5432
+          targetPort: ev-db

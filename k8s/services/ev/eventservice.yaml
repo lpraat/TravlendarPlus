@@ -1,11 +1,11 @@
 kind: Service
 apiVersion: v1
 metadata:
-    name: cal
+    name: ev
 spec:
     selector:
-        app: cal
+        app: ev
     ports:
         - protocol: 'TCP'
           port: 80
-          targetPort: cal-uwsgi
+          targetPort: ev-uwsgi
