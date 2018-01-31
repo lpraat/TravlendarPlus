@@ -6,6 +6,7 @@ from sqlalchemy.exc import SQLAlchemyError
 
 from src.commandhandler import command
 from src.commandhandler.validate_data import validate_request_payload, is_unique_email, validate_user_data
+from src.configs import KONG_IP
 from src.constants import USER_MODIFIED
 from src.eventhandler.event_send import publish_event
 from src.eventrepository import EventStoreSession
@@ -18,7 +19,6 @@ from src.utils import hash_pass
 
 logger = logging.getLogger(__name__)
 
-KONG_IP = "172.18.0.2"
 KONG_CONSUMER_API = f"http://{KONG_IP}:8001/consumers"
 
 @command.route('/users/<int:user_id>', methods=['PUT'])

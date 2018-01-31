@@ -16,4 +16,7 @@ RABBITMQ_IP = env['RABBITMQ_IP'] if 'RABBITMQ_IP' in env else 'localhost'
 RABBITMQ_PORT = int(env['RABBITMQ_PORT']) if 'RABBITMQ_PORT' in env else 5672
 
 
+KONG_IP = env['KONG_IP']
+
+
 

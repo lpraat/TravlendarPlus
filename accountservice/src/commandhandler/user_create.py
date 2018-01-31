@@ -7,6 +7,7 @@ from sqlalchemy.exc import SQLAlchemyError
 
 from src.commandhandler import command
 from src.commandhandler.validate_data import validate_request_payload, validate_user_data, is_unique_email
+from src.configs import KONG_IP
 from src.constants import USER_CREATED
 from src.eventhandler.event_send import publish_event
 from src.eventrepository import EventStoreSession
@@ -19,7 +20,6 @@ from src.utils import hash_pass
 
 logger = logging.getLogger(__name__)
 
-KONG_IP = "172.18.0.2"
 KONG_CONSUMER_API = f"http://{KONG_IP}:8001/consumers"
 
 
