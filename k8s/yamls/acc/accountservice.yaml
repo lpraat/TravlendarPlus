@@ -52,6 +52,7 @@ spec:
             - name: RABBITMQ_PORT
               value: '5672'
             - name: KONG_IP
+              value: kong.default.svc.cluster.local
 
           ports:
             - name: acc-uwsgi
