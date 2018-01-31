@@ -6,12 +6,12 @@ from flask import request, jsonify
 
 from src.authenticationhandler import auth
 from src.authenticationhandler.validate_data import validate_request_paylaod
+from src.configs import KONG_IP
 from src.queryrepository.query import get_user_id_by_credentials
 from src.responses import ko, ok, bad_request
 
 logger = logging.getLogger(__name__)
 
-KONG_IP = "172.18.0.2"  # todo configure this ip
 
 
 @auth.route('/login', methods=['POST'])

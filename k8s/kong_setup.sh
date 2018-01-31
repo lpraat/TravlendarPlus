@@ -40,7 +40,3 @@ curl -i -X POST http://localhost:8001/apis/ \
         --data-urlencode 'upstream_url=http://acc.default.svc.cluster.local' \
         -d 'uris=/' \
 	-d 'strip_uri=false'
-
-# fix redis issue
-docker exec -it redis_server redis-cli config set stop-writes-on-bgsave-error no
-docker exec -it redis_server sysctl -p /etc/sysctl.conf

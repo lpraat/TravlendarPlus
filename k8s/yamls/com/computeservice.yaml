@@ -7,7 +7,7 @@ spec:
         app: com
     ports:
         - protocol: 'TCP'
-          port: 80
+          port: 8006
           targetPort: com-uwsgi
 
 ---

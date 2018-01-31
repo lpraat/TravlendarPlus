@@ -41,6 +41,10 @@ spec:
               value: rabbit.default.svc.cluster.local
             - name: RABBITMQ_PORT
               value: '5672'
+            - name: COMPUTE_SERVICE_IP
+              value: com.default.svc.cluster.local
+            - name: COMPUTE_SERVICE_PORT
+              value: '8006'
           ports:
             - name: ins-uwsgi
               containerPort: 8005
