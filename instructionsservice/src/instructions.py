@@ -117,6 +117,7 @@ def yield_recurrences(event):
 def fix_arrival_time(event, data):
     """Returns a new arrival time for this event by performing calculations on the flex option"""
     flex = event['flex_duration']
+    logger.info(f"Flex duration: {flex}")
     if flex is None:
         return event['start_time']  # flex disabled, arrival time remains the same
     # time in seconds needed to reach the event just in time
@@ -249,6 +250,8 @@ def calculate_instruction(global_preferences, calendar, event, id, departure=Tru
                 data['arrival_time'] = int(fix_arrival_time(event, data).timestamp())
             # travel compute service returns a list of overviews
             response = requests.get(COMPUTE_SERVICE_URL, params=data).json()
+            response = [{**r, **{'true_start': datetime.datetime.fromtimestamp(data['arrival_time' if departure else 'departure_time'])}}
+                        for r in response]
             # keep only the instructions that satisfy the preferences
             overviews.extend([overview for overview in response
                               if satisfies_preferences(overview, calendar.preferences, event['start_time'])])
@@ -274,14 +277,15 @@ def add_instruction(instruction, **kwargs):
         db.session.commit()
         logger.info(f"Added unreachable instruction: {warning_overview}")
         return
-    previous_overviews = list(get_overviews_by_date(kwargs['user_id'], kwargs['start_date'].replace(year=1995),kwargs['start_date'] - datetime.timedelta(seconds=1)))
+    previous_overviews = list(get_overviews_by_date(kwargs['user_id'], kwargs['start_date'].replace(year=1995),instruction['true_start'] - datetime.timedelta(seconds=1)))
     logger.info(previous_overviews)
     previous_date = previous_overviews[-1].end_date if previous_overviews else datetime.datetime.now()
     # If the event is not a return instruction and cannot be reached in time from the previous event mark unreachable
-    if previous_date + datetime.timedelta(seconds=instruction['duration']) > kwargs['start_date'] and kwargs['departure']:
+    if previous_date + datetime.timedelta(seconds=instruction['duration']) > instruction['true_start'] and kwargs['departure']:
         kwargs['reachable'] = False
         logger.warning(f"Instruction has been marked as unreachable.")
     steps = instruction.pop('steps')
+    instruction.pop('true_start')
     overview = Overview(**{**instruction, **kwargs})
     del kwargs['start_date'], kwargs['end_date'], kwargs['departure'], kwargs['flex_duration'], kwargs['reachable'], kwargs['next_is_base']
     for i, step in enumerate(steps):

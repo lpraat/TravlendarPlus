@@ -5,7 +5,7 @@ import android.content.Context;
 
 public class ApiCreator {
 
-    private static final String BASE_URL = "http://192.168.1.4:8000";
+    private static final String BASE_URL = "http://35.205.121.52:8000";
 
     /**
      * Returns a client that is able to do REST call to the Travlendar API
