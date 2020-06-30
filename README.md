@@ -1,3 +1,20 @@
+# Travlendar+
+<div align="center">
+    <img src="arch_img.png" width="500" height="400" />
+</div>
+
+A mobile calendar-based application that automatically computes and accounts for travel time between appointments to make sure that the user is not late for them. Travlendar+ is based on an event-driven microservice architecture.
+
+## Team Members
+- Lorenzo Pratissoli
+- Riccardo Novic
+
+## Documents
+- [RASD](documents/RASD.pdf)
+- [DD](documents/DD.pdf)
+- [ITD](documents/ITD.pdf)
+- [ATD](documents/ATD.pdf)
+
 ## Instructions for deploying everything
 
 - `git clone $this_repo`
